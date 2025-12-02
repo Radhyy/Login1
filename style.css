@@ -1,0 +1,374 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 900px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    transition: all 0.8s ease-in-out;
+}
+
+.form-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 50px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+    transition: all 0.8s ease-in-out;
+}
+
+.sign-in-panel {
+    left: 0;
+    background: #ffffff;
+}
+
+.sign-up-panel {
+    left: 50%;
+    background: #ffffff;
+    opacity: 0;
+    z-index: 0;
+    transform: translateX(100%);
+}
+
+.form-content {
+    width: 100%;
+    max-width: 320px;
+}
+
+.form-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.social-btn.facebook {
+    color: #3b5998;
+}
+
+.social-btn.google {
+    color: #db4437;
+}
+
+.social-btn.linkedin {
+    color: #0077b5;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.or-text {
+    color: #666;
+    margin: 20px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.input-group input:focus {
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+    background: white;
+}
+
+.forgot-password {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #1e40af;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+    color: white;
+    border: none;
+    padding: 16px 45px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Overlay Styles */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.8s ease-in-out;
+    z-index: 100;
+}
+
+.overlay {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.8s ease-in-out;
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.8s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.overlay-content {
+    max-width: 300px;
+}
+
+.overlay-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.overlay-content p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.btn-transparent {
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.btn-transparent:hover {
+    background: #ffffff;
+    color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Animation Classes */
+.container.right-panel-active .sign-in-panel {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 0;
+}
+
+.container.right-panel-active .sign-up-panel {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 1;
+    animation: show 0.8s;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+@keyframes show {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 0;
+    }
+    
+    50%, 100% {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        height: 90vh;
+        margin: 20px;
+    }
+    
+    .form-panel {
+        padding: 30px 20px;
+    }
+    
+    .form-content {
+        max-width: 280px;
+    }
+    
+    .form-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .overlay-content {
+        max-width: 250px;
+    }
+    
+    .overlay-content h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .form-panel {
+        padding: 20px 15px;
+    }
+    
+    .input-group input {
+        padding: 12px 12px 12px 40px;
+        font-size: 14px;
+    }
+    
+    .btn-primary {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}
